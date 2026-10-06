@@ -82,7 +82,7 @@ function App() {
         </a>
         <button className="mobile-toggle" aria-label={menuOpen ? 'Close menu' : 'Open menu'} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X/> : <Menu/>}</button>
         <nav className={menuOpen ? 'nav-links open' : 'nav-links'} aria-label="Main navigation">
-          <a href="#work" onClick={closeMenu}>Selected work</a><a href="#experience" onClick={closeMenu}>Experience</a><a href="#about" onClick={closeMenu}>About</a>
+          <a href="#about" onClick={closeMenu}>About</a><a href="#education" onClick={closeMenu}>Education</a><a href="#skills" onClick={closeMenu}>Skills</a><a href="#work" onClick={closeMenu}>Projects</a><a href="#experience" onClick={closeMenu}>Experience</a>
           <a className="nav-contact" href="#contact" onClick={closeMenu}>Say hello <ArrowUpRight size={14}/></a>
         </nav>
       </header>
@@ -96,7 +96,7 @@ function App() {
               <p className="hero-intro reveal delay-2">I’m Pushya—a software developer in Bengaluru turning reliability problems into measurable backend and full-stack systems.</p>
               <div className="hero-actions reveal delay-3">
                 <a className="button button-light" href="#work">Explore my work <ArrowDownRight size={16}/></a>
-                <a className="text-link hero-resume" href="/resume.pdf" download>Download résumé <ArrowDown size={15}/></a>
+                <a className="text-link hero-resume" href="https://drive.google.com/file/d/1p53kfcbYR64Zopu6lKrrMcUP02mLCbi9/view?usp=sharing" target="_blank" rel="noopener noreferrer">View résumé <ArrowDown size={15}/></a>
               </div>
             </div>
             <div className="scene-caption"><span>FIELD NOTES · 01</span><span>A MONSOON DREAMSCAPE</span></div>
@@ -107,16 +107,40 @@ function App() {
           </div>
         </section>
 
-        <section className="intro-strip" aria-label="Introduction">
-          <span className="section-kicker">THE SHORT VERSION</span>
-          <p>Systems are only useful when they work under pressure. I build for the moment a retry arrives twice, a dataset grows, or a real-time view needs to stay in sync.</p>
-          <span className="intro-sprig" aria-hidden="true">✳</span>
+        <section className="about-section section-wrap" id="about">
+          <div className="about-copy">
+            <span className="section-kicker">A LITTLE CONTEXT</span>
+            <h2>Curious by nature.<br/><em>Reliable by design.</em></h2>
+            <p>I build backend and full-stack software, with a focus on dependable systems—from payment ledgers and paper search to real-time flight tracking.</p>
+            <p>The National Cadet Corps strengthened my sense of discipline, teamwork, and responsibility.</p>
+            <div className="ncc-badge"><ShieldCheck size={23}/><span><strong>NCC B & C Certificates</strong><small>Completed 2 years in the National Cadet Corps, demonstrating leadership, discipline, and teamwork through structured national-level military training.</small></span></div>
+          </div>
+        </section>
+
+        <section className="education-section" id="education">
+          <div className="section-wrap">
+            <div className="education-head"><div><span className="section-kicker">THE LEARNING THAT GOT ME HERE</span><h2>Built on good<br/><em>foundations.</em></h2></div><GraduationCap size={33} strokeWidth={1.2}/></div>
+            <div className="education-grid">
+              <article className="degree"><div className="degree-symbol">01</div><div><span className="degree-date">SEPT 2025 — MAY 2027 · ANTICIPATED</span><h3>Master of Technology</h3><p>Computer Science and Engineering</p><span className="school">New Horizon College of Engineering, Bengaluru</span></div><div className="gpa"><strong>9.0</strong><span>CGPA / 10</span></div></article>
+              <article className="degree"><div className="degree-symbol">02</div><div><span className="degree-date">OCT 2021 — MAY 2025</span><h3>Bachelor of Engineering</h3><p>Computer Science and Engineering</p><span className="school">MVJ College of Engineering, Bengaluru</span></div><div className="gpa"><strong>7.73</strong><span>CGPA / 10</span></div></article>
+            </div>
+          </div>
+        </section>
+
+        <section className="skills-section" id="skills">
+          <div className="section-wrap">
+            <div className="skills-heading"><span className="section-kicker">TOOLS & TECHNIQUES</span><h2>Skills for the work.</h2></div>
+            <div className="skills-panel">
+              <div className="skills-head"><Code2 size={17}/><span>TOOLS IN MY FIELD KIT</span></div>
+              {groups.map(([title, ...skills]) => <div className="skill-group" key={title}><h3>{title}</h3><div>{skills.map(skill => <span key={skill}>{skill}</span>)}</div></div>)}
+            </div>
+          </div>
         </section>
 
         <section className="projects-section section-wrap" id="work">
           <div className="section-heading">
             <div><span className="section-kicker">A FEW THINGS I’VE BUILT</span><h2>Work with<br/><em>real-world edges.</em></h2></div>
-            <p>Three projects, one recurring question: how do we make a system more dependable—and prove it?</p>
+            <p>Three projects focused on making systems dependable—and proving it with measurable results.</p>
           </div>
           <div className="project-list">
             {projects.map((project) => (
@@ -163,31 +187,6 @@ function App() {
           </div>
         </section>
 
-        <section className="about-section section-wrap" id="about">
-          <div className="about-copy">
-            <span className="section-kicker">A LITTLE CONTEXT</span>
-            <h2>Curious by nature.<br/><em>Reliable by design.</em></h2>
-            <p>I’m drawn to the details that make software trustworthy: clean interfaces between services, deliberate handling of concurrency, and tests that tell you when the edges move.</p>
-            <p>Outside the code, the National Cadet Corps shaped the same instincts—discipline, teamwork, and seeing a responsibility through.</p>
-            <div className="ncc-badge"><ShieldCheck size={23}/><span><strong>NCC B & C Certificates</strong><small>Completed 2 years in the National Cadet Corps, demonstrating leadership, discipline, and teamwork through structured national-level military training.</small></span></div>
-          </div>
-          <div className="about-side">
-            <div className="skills-head"><Code2 size={17}/><span>TOOLS IN MY FIELD KIT</span></div>
-            {groups.map(([title, ...skills]) => <div className="skill-group" key={title}><h3>{title}</h3><div>{skills.map(skill => <span key={skill}>{skill}</span>)}</div></div>)}
-            <div className="pressed-flower" aria-hidden="true">✳</div>
-          </div>
-        </section>
-
-        <section className="education-section">
-          <div className="section-wrap">
-            <div className="education-head"><div><span className="section-kicker">THE LEARNING THAT GOT ME HERE</span><h2>Built on good<br/><em>foundations.</em></h2></div><GraduationCap size={33} strokeWidth={1.2}/></div>
-            <div className="education-grid">
-              <article className="degree"><div className="degree-symbol">01</div><div><span className="degree-date">SEPT 2025 — MAY 2027 · ANTICIPATED</span><h3>Master of Technology</h3><p>Computer Science and Engineering</p><span className="school">New Horizon College of Engineering, Bengaluru</span></div><div className="gpa"><strong>9.0</strong><span>CGPA / 10</span></div></article>
-              <article className="degree"><div className="degree-symbol">02</div><div><span className="degree-date">OCT 2021 — MAY 2025</span><h3>Bachelor of Engineering</h3><p>Computer Science and Engineering</p><span className="school">MVJ College of Engineering, Bengaluru</span></div><div className="gpa"><strong>7.73</strong><span>CGPA / 10</span></div></article>
-            </div>
-          </div>
-        </section>
-
         <section className="contact-section" id="contact">
           <div className="contact-landscape" aria-hidden="true"><span className="contact-moon"/><span className="hill hill-back"/><span className="hill hill-front"/><span className="contact-path"/></div>
           <div className="contact-content">
@@ -204,7 +203,7 @@ function App() {
           </div>
         </section>
       </main>
-      <footer className="footer"><a className="wordmark footer-brand" href="#top"><span className="wordmark-icon"><Compass size={16}/></span><span>B. C. Pushya</span></a><span>BUILT THOUGHTFULLY · BENGALURU, INDIA</span><a href="/resume.pdf" download>RÉSUMÉ <ArrowUpRight size={13}/></a></footer>
+      <footer className="footer"><a className="wordmark footer-brand" href="#top"><span className="wordmark-icon"><Compass size={16}/></span><span>B. C. Pushya</span></a><span>BUILT THOUGHTFULLY · BENGALURU, INDIA</span><a href="https://drive.google.com/file/d/1p53kfcbYR64Zopu6lKrrMcUP02mLCbi9/view?usp=sharing" target="_blank" rel="noopener noreferrer">RÉSUMÉ <ArrowUpRight size={13}/></a></footer>
     </div>
   );
 }

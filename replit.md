@@ -1,45 +1,42 @@
-# [Project name]
+# B. C. Pushya — Portfolio
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+A single-page portfolio highlighting B. C. Pushya's software projects, internship experience, education, skills, and contact links.
 
 ## Run & Operate
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
+- `pnpm --filter @workspace/pushya-portfolio run dev` — run the portfolio web app
+- `pnpm --filter @workspace/pushya-portfolio run typecheck` — typecheck the portfolio
 - `pnpm run typecheck` — full typecheck across all packages
 - `pnpm run build` — typecheck + build all packages
-- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
+- No database or API server is required by the portfolio.
 
 ## Stack
 
 - pnpm workspaces, Node.js 24, TypeScript 5.9
-- API: Express 5
-- DB: PostgreSQL + Drizzle ORM
-- Validation: Zod (`zod/v4`), `drizzle-zod`
-- API codegen: Orval (from OpenAPI spec)
-- Build: esbuild (CJS bundle)
+- Frontend: React, Vite, TypeScript, Tailwind CSS
+- Icons: Lucide React
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/pushya-portfolio/src/App.tsx` — portfolio content and page structure
+- `artifacts/pushya-portfolio/src/index.css` — visual theme and responsive styling
+- `artifacts/pushya-portfolio/public/resume.pdf` — downloadable résumé
+- `artifacts/pushya-portfolio/index.html` — page title and sharing metadata
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- The portfolio is a static single-page site; its content is based on the supplied résumé.
+- Project cards link to the matching public GitHub repositories.
+- Use original hand-painted fantasy artwork rather than existing studio art or characters.
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+Visitors can browse projects, work experience, education, skills, and NCC recognition; open project repositories and social profiles; contact Pushya; or download the résumé.
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+- The user wants a whimsical, Ghibli-inspired anime atmosphere for this portfolio.
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
-
-## Pointers
-
-- See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details
+The résumé file available for download should stay in the portfolio's `public` directory.

@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "B. C. Pushya — Portfolio"
+description = "A personal software engineering portfolio for B. C. Pushya, showcasing backend and full-stack projects, professional experience, education, technical skills, and direct contact links."
+version = "1.0.0"
+id = "artifacts/pushya-portfolio"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 21914
+
+[services.development]
+run = "pnpm --filter @workspace/pushya-portfolio run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/pushya-portfolio", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/pushya-portfolio/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21914"
+BASE_PATH = "/"

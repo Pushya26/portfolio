@@ -210,8 +210,20 @@
 .contact-content .section-kicker { color:#e1b983; }
 .contact-content h2 { font-size:clamp(52px,7vw,85px); margin:17px 0 15px; }
 .contact-content p { color:#d1ddcf; font-size:13px; }
-.contact-cta { margin-top:13px; }
-.contact-links { display:flex; flex-wrap:wrap; gap:27px; position:relative; z-index:1; margin-top:70px; padding-top:22px; border-top:1px solid rgba(240,231,204,.28); }
+.contact-form { max-width:760px; margin-top:24px; }
+.contact-form-fields { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.contact-form label { display:flex; flex-direction:column; gap:8px; color:#e1b983; font:9px var(--app-font-mono); letter-spacing:.1em; }
+.contact-form input,.contact-form textarea { width:100%; border:1px solid rgba(240,231,204,.38); border-radius:2px; background:rgba(15,44,37,.5); color:#fff6df; padding:12px 13px; font:13px/1.5 var(--app-font-sans); letter-spacing:normal; outline:none; }
+.contact-form textarea { min-height:112px; resize:vertical; }
+.contact-form input:focus-visible,.contact-form textarea:focus-visible { border-color:#e4b77e; outline:2px solid rgba(228,183,126,.35); outline-offset:2px; }
+.contact-message-field { margin-top:14px; }
+.contact-honeypot { position:absolute; left:-10000px; width:1px; height:1px; overflow:hidden; }
+.contact-form-actions { display:flex; align-items:center; gap:17px; margin-top:14px; }
+.contact-cta { margin:0; border:0; cursor:pointer; }
+.contact-cta:disabled { opacity:.7; cursor:wait; }
+.contact-form-note { color:#d1ddcf; font-size:11px; line-height:1.5; }
+.contact-form-status { min-height:18px; margin:12px 0 0; color:#e4b77e; font-size:12px; line-height:1.5; }
+.contact-links { display:flex; flex-wrap:wrap; gap:27px; position:relative; z-index:1; margin-top:38px; padding-top:22px; border-top:1px solid rgba(240,231,204,.28); }
 .contact-links a { display:flex; align-items:center; gap:8px; color:#e8e6d6; text-decoration:none; font-size:10px; transition:color .2s; }
 .contact-links a:hover { color:#e4b77e; }
 .footer { min-height:69px; max-width:1160px; margin:0 auto; padding:0 38px; display:flex; align-items:center; justify-content:space-between; color:#778174; font:8px var(--app-font-mono); letter-spacing:.1em; }
@@ -231,7 +243,7 @@
   .about-section { padding-top:58px; padding-bottom:60px; }.about-copy h2 { font-size:46px; margin-bottom:18px; }
   .education-section { padding:59px 0 65px; }.education-head h2 { font-size:46px; }.degree { grid-template-columns:30px 1fr auto; gap:10px; }.degree h3 { font-size:19px; }.school { max-width:240px; line-height:1.6; }.gpa strong { font-size:23px; }
   .skills-section { padding:48px 0 54px; }.skills-heading { align-items:flex-start; flex-direction:column; gap:10px; }.skills-heading h2 { font-size:31px; }.skills-panel { padding:17px 17px; }.skill-group { grid-template-columns:110px 1fr; }
-  .contact-section { padding:68px 27px 22px; min-height:465px; }.contact-links { margin-top:48px; gap:16px 23px; }.contact-links a { font-size:10px; }.contact-moon { right:8%; }
+   .contact-section { padding:68px 27px 22px; min-height:465px; }.contact-form-fields { grid-template-columns:1fr; gap:12px; }.contact-form-actions { align-items:flex-start; flex-direction:column; gap:10px; }.contact-links { margin-top:32px; gap:16px 23px; }.contact-links a { font-size:10px; }.contact-moon { right:8%; }
   .footer { padding:0 22px; gap:10px; }.footer>span { display:none; }
 }
 @media (max-width:390px) {

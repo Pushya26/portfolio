@@ -10,6 +10,8 @@ servers:
 tags:
   - name: health
     description: Health operations
+  - name: contact
+    description: Portfolio contact form
 paths:
   /healthz:
     get:
@@ -24,6 +26,42 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+  /contact:
+    post:
+      operationId: sendContactMessage
+      tags: [contact]
+      summary: Send a portfolio contact message
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ContactMessageInput"
+      responses:
+        "200":
+          description: Message accepted for delivery
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ContactMessageResponse"
+        "400":
+          description: Invalid message
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiError"
+        "429":
+          description: Too many messages sent
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiError"
+        "502":
+          description: Email delivery failed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiError"
 components:
   schemas:
     HealthStatus:
@@ -33,4 +71,42 @@ components:
           type: string
       required:
         - status
+    ContactMessageInput:
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        message:
+          type: string
+          minLength: 1
+          maxLength: 5000
+        website:
+          type: string
+          maxLength: 100
+      required:
+        - name
+        - email
+        - message
+    ContactMessageResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [sent]
+      required:
+        - status
+    ApiError:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+        - error
 

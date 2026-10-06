@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, type FormEvent } from 'react';
 import { ArrowDown, ArrowDownRight, ArrowRight, ArrowUpRight, BookOpen, BriefcaseBusiness, Code2, Compass, Github, GraduationCap, Mail, Menu, Phone, ShieldCheck, X } from 'lucide-react';
+import { sendContactMessage } from '@workspace/api-client-react';
 
 const projects = [
   {
@@ -71,7 +72,33 @@ const groups = [
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [contactNotice, setContactNotice] = useState<'idle' | 'sent' | 'error'>('idle');
   const closeMenu = () => setMenuOpen(false);
+
+  const handleContactSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const values = new FormData(form);
+    setIsSending(true);
+    setContactNotice('idle');
+
+    try {
+      await sendContactMessage({
+        name: String(values.get('name') ?? '').trim(),
+        email: String(values.get('email') ?? '').trim(),
+        message: String(values.get('message') ?? '').trim(),
+        website: String(values.get('website') ?? '').trim(),
+      });
+      form.reset();
+      setContactNotice('sent');
+    } catch {
+      setContactNotice('error');
+    } finally {
+      setIsSending(false);
+    }
+  };
+
   return (
     <div className="grain min-h-[100dvh] overflow-hidden">
       <a className="skip-link" href="#main">Skip to content</a>
@@ -158,7 +185,7 @@ function App() {
                   </div>
                   <div className="project-detail">
                     <div className="metrics">
-                      {project.proof.map(([figure, label]) => <div className="metric" key={figure}><strong>{figure}</strong><span>{label}</span></div>)}
+                      {project.proof.map(([figure, label]) => <div className="text-[10px] text-left" key={figure}><strong>{figure}</strong><span>{label}</span></div>)}
                     </div>
                     <p className="project-note">{project.note}</p>
                   </div>
@@ -192,8 +219,20 @@ function App() {
           <div className="contact-content">
             <span className="section-kicker">THE NEXT CHAPTER</span>
             <h2>Have a hard<br/>problem? <em>Good.</em></h2>
-            <p>Let’s talk about systems that need to work when it matters.</p>
-            <a className="button button-light contact-cta" href="mailto:chandrupushya@gmail.com">Write me a note <ArrowUpRight size={16}/></a>
+            <p>Let’s talk about systems that need to work when it matters. Send a note straight to my inbox.</p>
+            <form className="contact-form" onSubmit={handleContactSubmit} onChange={() => contactNotice !== 'idle' && setContactNotice('idle')}>
+              <div className="contact-form-fields">
+                <label htmlFor="contact-name">YOUR NAME<input id="contact-name" name="name" type="text" autoComplete="name" maxLength={100} required/></label>
+                <label htmlFor="contact-email">YOUR EMAIL<input id="contact-email" name="email" type="email" autoComplete="email" maxLength={254} required/></label>
+              </div>
+              <label className="contact-message-field" htmlFor="contact-message">YOUR NOTE<textarea id="contact-message" name="message" rows={4} maxLength={5000} required/></label>
+              <div className="contact-honeypot" aria-hidden="true"><label htmlFor="contact-website">Leave this field empty</label><input id="contact-website" name="website" type="text" tabIndex={-1} autoComplete="off"/></div>
+              <div className="contact-form-actions">
+                <button className="button button-light contact-cta" type="submit" disabled={isSending}>{isSending ? 'Sending…' : 'Send me a note'} <ArrowUpRight size={16}/></button>
+                <span className="contact-form-note">Your email is only used if I reply.</span>
+              </div>
+              <p className="contact-form-status" aria-live="polite" role={contactNotice === 'error' ? 'alert' : 'status'}>{contactNotice === 'sent' ? 'Your note is on its way. Thanks for reaching out.' : contactNotice === 'error' ? 'Your note could not be sent right now. Please try again or email me directly.' : ''}</p>
+            </form>
           </div>
           <div className="contact-links">
             <a href="tel:+917259167376"><Phone size={15}/> +91 7259167376</a>

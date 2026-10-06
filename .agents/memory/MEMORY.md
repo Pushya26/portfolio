@@ -1,0 +1,1 @@
+- [Resend API-key recovery](resend-api-key-recovery.md) — An attached Resend connection can still hold an invalid API key; inspect the provider error and update the existing connection.

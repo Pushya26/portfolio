@@ -270,10 +270,17 @@ body { background:#f5f2dc; color:#263f30; }
 .about-layout { display:grid; grid-template-columns:minmax(0,1fr) minmax(260px,360px); gap:clamp(32px,6vw,80px); align-items:center; }
 .about-copy>p { color:#4e6750; font-size:15px; }
 .about-character { width:100%; margin:0; padding:10px; position:relative; justify-self:end; background:#f8f4e7; border:3px solid #315a3e; box-shadow:7px 7px 0 #b2c992; animation:character-idle 5s steps(3,end) infinite; }
-.about-character img { display:block; width:100%; aspect-ratio:1; object-fit:cover; image-rendering:pixelated; border:1px solid #99aa79; }
+.character-stage { position:relative; width:100%; aspect-ratio:1; overflow:hidden; border:1px solid #99aa79; }
+.character-pose { position:absolute; inset:0; display:block; width:100%; height:100%; object-fit:cover; image-rendering:pixelated; opacity:0; animation-duration:9s; animation-timing-function:steps(1,end); animation-iteration-count:infinite; }
+.character-pose--rest { animation-name:character-pose-rest; }
+.character-pose--wave { animation-name:character-pose-wave; }
+.character-pose--notebook { animation-name:character-pose-notebook; }
 .about-character figcaption { display:flex; align-items:center; justify-content:center; gap:8px; padding:12px 4px 3px; color:#4e6750; font:600 10px var(--app-font-pixel); letter-spacing:.02em; }
 .character-status { width:7px; height:7px; display:inline-block; flex:0 0 auto; background:#c9785c; box-shadow:2px 2px 0 #e8be6d; }
 @keyframes character-idle { 0%,100% { transform:translateY(0) rotate(1deg); } 50% { transform:translateY(-5px) rotate(0); } }
+@keyframes character-pose-rest { 0%,32.99%,100% { opacity:1; } 33%,99.99% { opacity:0; } }
+@keyframes character-pose-wave { 0%,32.99%,66%,100% { opacity:0; } 33%,65.99% { opacity:1; } }
+@keyframes character-pose-notebook { 0%,65.99%,100% { opacity:0; } 66%,99.99% { opacity:1; } }
 .ncc-badge { max-width:540px; border:2px solid #77926a; background:#e4edc7; padding:14px; margin-top:20px; box-shadow:4px 4px 0 #bed09e; }
 .ncc-badge svg { border:2px solid #426749; padding:3px; width:31px; height:31px; background:#f9f2d6; }
 .ncc-badge strong { color:#28543b; font:600 16px var(--app-font-pixel); }

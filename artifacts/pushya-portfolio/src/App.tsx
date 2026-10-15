@@ -144,7 +144,11 @@ function App() {
               <div className="ncc-badge"><ShieldCheck size={23}/><span><strong>NCC B & C Certificates</strong><small>Completed 2 years in the National Cadet Corps, demonstrating leadership, discipline, and teamwork through structured national-level military training.</small></span></div>
             </div>
             <figure className="about-character">
-              <img src="/pushya-pixel-character.webp" alt="Pixel-art portrait of Pushya smiling in a burgundy top against a sunny countryside." />
+              <div className="character-stage" role="img" aria-label="Animated pixel-art portrait of Pushya in a sunny countryside">
+                <img className="character-pose character-pose--rest" src="/pushya-pixel-character.webp" alt="" aria-hidden="true" />
+                <img className="character-pose character-pose--wave" src="/pushya-pixel-character-wave.webp" alt="" aria-hidden="true" />
+                <img className="character-pose character-pose--notebook" src="/pushya-pixel-character-notebook.webp" alt="" aria-hidden="true" />
+              </div>
               <figcaption><span className="character-status" aria-hidden="true"/> PIXEL PROFILE · BENGALURU</figcaption>
             </figure>
           </div>

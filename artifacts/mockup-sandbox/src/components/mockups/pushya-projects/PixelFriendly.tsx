@@ -5,15 +5,16 @@ const projects = [
   {
     number: '01',
     type: 'PAYMENT SYSTEM · IN PROGRESS',
-    title: 'Reliable Payment Ledger',
+    title: 'Reliable Payment Records',
     url: 'https://github.com/Pushya26/idempotent_payment_ledger_service',
     art: 'ledger',
     summary: 'A payment service designed to prevent repeat requests from charging someone twice.',
     highlights: [
-      ['0', 'duplicate charges across 50 payment attempts sent at once'],
-      ['11 tests', 'checked 3 service endpoints'],
-      ['1:1', 'kept every completed payment balanced in the records'],
+      ['0', 'No duplicate charges occurred across 50 payment requests sent at once.'],
+      ['11 tests', 'Automated tests checked all 3 service endpoints.'],
+      ['1:1', 'Every completed payment stayed balanced in the records.'],
     ],
+    techDetails: 'JUnit tests · REST API · Redis idempotency keys · payment state machine · double-entry ledger · Flyway schema · Docker Compose',
     stack: ['Java', 'Spring Boot', 'PostgreSQL', 'Redis', 'Docker'],
   },
   {
@@ -24,10 +25,11 @@ const projects = [
     art: 'search',
     summary: 'A search tool that helps people find relevant research papers across a large library.',
     highlights: [
-      ['5,838', 'research papers made searchable in one place'],
-      ['292×', 'less work needed to rank search results'],
-      ['~50 → 2 ms', 'cut repeat-search time from about 50 ms to 2 ms'],
+      ['5,838', 'The tool made 5,838 research papers searchable, and 65 tests checked its key features.'],
+      ['292×', 'The search engine needed 292× less work to sort results by relevance.'],
+      ['~50 → 2 ms', 'Repeat-search time fell from about 50 milliseconds to 2 milliseconds.'],
     ],
+    techDetails: 'arXiv collection · BM25 and PageRank ranking · about 99% fewer graph edges · incoming-link traversal · AND / OR / NOT parser · LRU cache',
     stack: ['Python', 'FastAPI', 'BM25', 'PageRank', 'WordNet', 'Semantic Scholar API'],
   },
   {
@@ -38,10 +40,11 @@ const projects = [
     art: 'flight',
     summary: 'A live map of simulated flights that keeps aircraft locations current and checks for nearby planes.',
     highlights: [
-      ['200', 'simulated flights shown on a live 3D map'],
-      ['2 seconds', 'between map updates; nearby flights checked every 15 seconds'],
-      ['17 tests', 'used to check the system; 10 tracked issues resolved'],
+      ['200', 'The live 3D map displayed 200 simulated flights.'],
+      ['2 seconds', 'The map refreshed every 2 seconds, and nearby aircraft were checked every 15 seconds.'],
+      ['17 tests', 'The project included 17 tests, and 10 tracked issues were resolved.'],
     ],
+    techDetails: 'Producer–consumer pipeline · pairwise distance and altitude checks · WebSocket updates · documented full-stack issue resolution',
     stack: ['Python', 'FastAPI', 'WebSocket', 'PostgreSQL', 'Docker', 'React', 'CesiumJS'],
   },
 ];
@@ -83,6 +86,10 @@ export function PixelFriendly() {
                   ))}
                 </ul>
               </div>
+              <details className="pixel-tech-details">
+                <summary>Technical details</summary>
+                <p>{project.techDetails}</p>
+              </details>
               <div className="pixel-tools">
                 <span className="pixel-tools-label">TOOLS USED</span>
                 {project.stack.map((tool) => <span className="pixel-tag" key={tool}>{tool}</span>)}

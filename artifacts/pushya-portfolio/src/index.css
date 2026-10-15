@@ -243,7 +243,7 @@ body { background:#f5f2dc; color:#263f30; }
 .nav-links .nav-contact { color:#fff4d9; background:#28563c; border:2px solid #1e412f; box-shadow:4px 4px 0 #9ab77f; border-radius:0; font-weight:700; }
 .nav-links .nav-contact:hover { background:#c87552!important; color:#fff!important; transform:translate(2px,2px); box-shadow:2px 2px 0 #6d8e60; }
 .mobile-toggle { color:#244b35; }
-.hero-image { border:4px solid #244e36; border-radius:0; background:#6c9d70 url('/pixel-countryside.png') center 54%/cover no-repeat; image-rendering:pixelated; box-shadow:7px 7px 0 #a5bd82; }
+.hero-image { border:4px solid #244e36; border-radius:0; background:#6c9d70 url('/pixel-countryside-banner.webp') center 54%/cover no-repeat; image-rendering:pixelated; box-shadow:7px 7px 0 #a5bd82; }
 .hero-vignette { background:linear-gradient(90deg,rgba(17,44,37,.76),rgba(24,52,41,.58) 35%,rgba(22,48,38,.08) 78%),linear-gradient(0deg,rgba(20,45,34,.48),transparent 26%); }
 .hero-copy { max-width:590px; }
 .hero .eyebrow { color:#ffe09b; font:600 14px var(--app-font-pixel); letter-spacing:.025em; }
@@ -267,7 +267,13 @@ body { background:#f5f2dc; color:#263f30; }
 .section-heading h2 em,.about-copy h2 em,.education-head h2 em { color:#b65f48; font-style:normal; }
 .section-heading>p { color:#506850; font-size:14px; }
 .about-section { background:#f5f2dc; background-image:linear-gradient(90deg,rgba(56,100,59,.035) 1px,transparent 1px),linear-gradient(rgba(56,100,59,.035) 1px,transparent 1px); background-size:12px 12px; }
+.about-layout { display:grid; grid-template-columns:minmax(0,1fr) minmax(260px,360px); gap:clamp(32px,6vw,80px); align-items:center; }
 .about-copy>p { color:#4e6750; font-size:15px; }
+.about-character { width:100%; margin:0; padding:10px; position:relative; justify-self:end; background:#f8f4e7; border:3px solid #315a3e; box-shadow:7px 7px 0 #b2c992; animation:character-idle 5s steps(3,end) infinite; }
+.about-character img { display:block; width:100%; aspect-ratio:1; object-fit:cover; image-rendering:pixelated; border:1px solid #99aa79; }
+.about-character figcaption { display:flex; align-items:center; justify-content:center; gap:8px; padding:12px 4px 3px; color:#4e6750; font:600 10px var(--app-font-pixel); letter-spacing:.02em; }
+.character-status { width:7px; height:7px; display:inline-block; flex:0 0 auto; background:#c9785c; box-shadow:2px 2px 0 #e8be6d; }
+@keyframes character-idle { 0%,100% { transform:translateY(0) rotate(1deg); } 50% { transform:translateY(-5px) rotate(0); } }
 .ncc-badge { max-width:540px; border:2px solid #77926a; background:#e4edc7; padding:14px; margin-top:20px; box-shadow:4px 4px 0 #bed09e; }
 .ncc-badge svg { border:2px solid #426749; padding:3px; width:31px; height:31px; background:#f9f2d6; }
 .ncc-badge strong { color:#28543b; font:600 16px var(--app-font-pixel); }
@@ -391,4 +397,27 @@ body { background:#f5f2dc; color:#263f30; }
 }
 @media (prefers-reduced-motion: reduce) {
   *,*::before,*::after { scroll-behavior:auto !important; transition-duration:.01ms !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; }
+}
+@media (max-width:800px) {
+  .nav-links { border:3px solid #315a3e; box-shadow:5px 5px 0 #a5bd82; }
+  .hero-image { background-position:right center; }
+  .hero-vignette { background:linear-gradient(90deg,rgba(15,42,35,.86),rgba(15,42,35,.7) 72%,rgba(15,42,35,.3)),linear-gradient(0deg,rgba(14,42,32,.5),transparent 38%); }
+  .floating-stamp { top:12px; right:16px; width:62px; height:62px; font-size:8px; }
+  .about-layout { grid-template-columns:1fr; gap:34px; }
+  .about-character { width:min(100%,320px); justify-self:center; }
+  .project-top { display:grid; grid-template-columns:auto minmax(0,1fr); align-items:center; gap:8px; }
+  .project-number { grid-column:1; }
+  .project-type { grid-column:2; text-align:right; }
+  .project-repo { grid-column:1 / -1; justify-self:start; }
+  .project-highlights li { grid-template-columns:max-content minmax(0,1fr); gap:8px; font-size:13px; }
+  .project-tech-details p { font-size:11px; }
+  .project-card:before { display:none; }
+}
+@media (max-width:390px) {
+  .section-heading h2,.about-copy h2,.education-head h2 { font-size:clamp(34px,10vw,42px); }
+  .project-top,.project-number,.project-type { font-size:9px; }
+  .project-main h3 { font-size:23px; }
+  .project-highlights li { grid-template-columns:1fr; gap:6px; }
+  .project-highlights strong { justify-self:start; }
+  .floating-stamp { width:62px; height:62px; font-size:8px; }
 }

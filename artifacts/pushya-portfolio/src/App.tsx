@@ -9,9 +9,9 @@ const projects = [
     description: 'A payment service designed to prevent repeat requests from charging someone twice and to keep each completed payment balanced.',
     stack: ['Java', 'Spring Boot', 'PostgreSQL', 'Redis', 'Docker'],
     highlights: [
-      { metric: '0', text: 'duplicate charges across 50 payment requests sent at once' },
-      { metric: '11 tests', text: 'checked 3 service endpoints' },
-      { metric: '1:1', text: 'kept every completed payment balanced in the records' },
+      { metric: '0', text: 'No duplicate charges occurred across 50 payment requests sent at once.' },
+      { metric: '11 tests', text: 'Automated tests checked all 3 service endpoints.' },
+      { metric: '1:1', text: 'Every completed payment stayed balanced in the records.' },
     ],
     techDetails: 'JUnit tests · REST API · Redis idempotency keys · payment state machine · double-entry ledger · Flyway schema · Docker Compose',
     art: 'ledger',
@@ -22,11 +22,11 @@ const projects = [
     description: 'A search tool that helps people find relevant research papers across a large library.',
     stack: ['Python', 'FastAPI', 'BM25', 'PageRank', 'WordNet', 'Semantic Scholar API'],
     highlights: [
-      { metric: '5,838', text: 'research papers made searchable; 65 tests checked key features' },
-      { metric: '292×', text: 'less work to rank results, with about 99% fewer graph edges' },
-      { metric: '~50 → 2 ms', text: 'repeat-search time, now about 2 ms' },
+      { metric: '5,838', text: 'The tool made 5,838 research papers searchable, and 65 tests checked its key features.' },
+      { metric: '292×', text: 'The search engine needed 292× less work to sort results by relevance.' },
+      { metric: '~50 → 2 ms', text: 'Repeat-search time fell from about 50 milliseconds to 2 milliseconds.' },
     ],
-    techDetails: 'arXiv collection · BM25 and PageRank ranking · incoming-link traversal · AND / OR / NOT recursive-descent parser · LRU cache',
+    techDetails: 'arXiv collection · BM25 and PageRank ranking · about 99% fewer graph edges · incoming-link traversal · AND / OR / NOT recursive-descent parser · LRU cache',
     art: 'search',
   },
   {
@@ -35,9 +35,9 @@ const projects = [
     description: 'A live map of simulated flights that keeps aircraft locations current and checks for nearby planes.',
     stack: ['Python', 'FastAPI', 'WebSocket', 'PostgreSQL', 'Docker', 'React', 'CesiumJS'],
     highlights: [
-      { metric: '200', text: 'simulated flights shown on a live 3D map' },
-      { metric: '2 sec', text: 'between map updates; nearby aircraft checked every 15 seconds' },
-      { metric: '17 tests', text: 'used to check the system, with 10 tracked issues resolved' },
+      { metric: '200', text: 'The live 3D map displayed 200 simulated flights.' },
+      { metric: '2 sec', text: 'The map refreshed every 2 seconds, and nearby aircraft were checked every 15 seconds.' },
+      { metric: '17 tests', text: 'The project included 17 tests, and 10 tracked issues were resolved.' },
     ],
     techDetails: 'Producer–consumer pipeline · pairwise distance and altitude checks · WebSocket updates · documented full-stack issue resolution',
     art: 'flight',
@@ -135,12 +135,18 @@ function App() {
         </section>
 
         <section className="about-section section-wrap" id="about">
-          <div className="about-copy">
-            <span className="section-kicker">A LITTLE CONTEXT</span>
-            <h2>Curious by nature.<br/><em>Reliable by design.</em></h2>
-            <p>I build backend and full-stack software, with a focus on dependable systems—from payment ledgers and paper search to real-time flight tracking.</p>
-            <p>The National Cadet Corps strengthened my sense of discipline, teamwork, and responsibility.</p>
-            <div className="ncc-badge"><ShieldCheck size={23}/><span><strong>NCC B & C Certificates</strong><small>Completed 2 years in the National Cadet Corps, demonstrating leadership, discipline, and teamwork through structured national-level military training.</small></span></div>
+          <div className="about-layout">
+            <div className="about-copy">
+              <span className="section-kicker">A LITTLE CONTEXT</span>
+              <h2>Curious by nature.<br/><em>Reliable by design.</em></h2>
+              <p>I build backend and full-stack software, with a focus on dependable systems—from payment ledgers and paper search to real-time flight tracking.</p>
+              <p>The National Cadet Corps strengthened my sense of discipline, teamwork, and responsibility.</p>
+              <div className="ncc-badge"><ShieldCheck size={23}/><span><strong>NCC B & C Certificates</strong><small>Completed 2 years in the National Cadet Corps, demonstrating leadership, discipline, and teamwork through structured national-level military training.</small></span></div>
+            </div>
+            <figure className="about-character">
+              <img src="/pushya-pixel-character.webp" alt="Pixel-art portrait of Pushya smiling in a burgundy top against a sunny countryside." />
+              <figcaption><span className="character-status" aria-hidden="true"/> PIXEL PROFILE · BENGALURU</figcaption>
+            </figure>
           </div>
         </section>
 

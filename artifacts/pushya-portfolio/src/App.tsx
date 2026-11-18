@@ -145,9 +145,9 @@ function App() {
             </div>
             <figure className="about-character">
               <div className="character-stage" role="img" aria-label="Animated pixel-art portrait of Pushya in a sunny countryside">
-                <img className="character-pose character-pose--rest" src="/pushya-pixel-character.webp" alt="" aria-hidden="true" />
-                <img className="character-pose character-pose--wave" src="/pushya-pixel-character-wave.webp" alt="" aria-hidden="true" />
-                <img className="character-pose character-pose--notebook" src="/pushya-pixel-character-notebook.webp" alt="" aria-hidden="true" />
+                <img className="character-pose character-pose--rest" src="/pushya-chibi-01.png" alt="" aria-hidden="true" />
+                <img className="character-pose character-pose--wave" src="/pushya-chibi-02.png" alt="" aria-hidden="true" />
+                <img className="character-pose character-pose--notebook" src="/pushya-chibi-03.png" alt="" aria-hidden="true" />
               </div>
               <figcaption><span className="character-status" aria-hidden="true"/> PIXEL PROFILE · BENGALURU</figcaption>
             </figure>

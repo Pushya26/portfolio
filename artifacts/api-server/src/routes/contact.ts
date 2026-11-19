@@ -90,7 +90,14 @@ router.post("/contact", async (req, res): Promise<void> => {
     });
 
     if (!delivery.ok) {
-      req.log.error({ status: delivery.status }, "Resend rejected a portfolio message");
+      const providerResponse = await delivery.text();
+      req.log.error(
+        {
+          status: delivery.status,
+          providerResponse: providerResponse.slice(0, 500),
+        },
+        "Resend rejected a portfolio message",
+      );
       res
         .status(502)
         .json(errorResponse("Email delivery is temporarily unavailable. Please try again later."));

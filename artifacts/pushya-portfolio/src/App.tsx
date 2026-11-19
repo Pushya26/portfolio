@@ -9,9 +9,9 @@ const projects = [
     description: 'A payment service designed to prevent repeat requests from charging someone twice and to keep each completed payment balanced.',
     stack: ['Java', 'Spring Boot', 'PostgreSQL', 'Redis', 'Docker'],
     highlights: [
-      { metric: '0', text: 'No duplicate charges occurred across 50 payment requests sent at once.' },
-      { metric: '11 tests', text: 'Automated tests checked all 3 service endpoints.' },
-      { metric: '1:1', text: 'Every completed payment stayed balanced in the records.' },
+      { metric: '0 duplicates', text: 'Prevented duplicate payments in 50 simultaneous retries using Redis idempotency keys.' },
+      { metric: 'debits = credits', text: 'Kept accounts balanced on every payment with a double-entry ledger and state machine.' },
+      { metric: '11 tests', text: 'Delivered a 3-endpoint REST API on a Flyway-versioned PostgreSQL schema in Docker Compose.' },
     ],
     techDetails: 'JUnit tests · REST API · Redis idempotency keys · payment state machine · double-entry ledger · Flyway schema · Docker Compose',
     art: 'ledger',
@@ -22,9 +22,9 @@ const projects = [
     description: 'A search tool that helps people find relevant research papers across a large library.',
     stack: ['Python', 'FastAPI', 'BM25', 'PageRank', 'WordNet', 'Semantic Scholar API'],
     highlights: [
-      { metric: '5,838', text: 'The tool made 5,838 research papers searchable, and 65 tests checked its key features.' },
-      { metric: '292×', text: 'The search engine needed 292× less work to sort results by relevance.' },
-      { metric: '~50 → 2 ms', text: 'Repeat-search time fell from about 50 milliseconds to 2 milliseconds.' },
+      { metric: '5,838 papers', text: 'Built a from-scratch search engine for 5,838 arXiv papers, measured by 65 automated tests, using BM25 and PageRank.' },
+      { metric: '292× fewer', text: 'Cut ranking work by linking only related papers, yielding 292× fewer PageRank operations and about 99% fewer edges.' },
+      { metric: '~50 → 2 ms', text: 'Sped up repeat searches with an LRU cache and added AND / OR / NOT search via a hand-written parser.' },
     ],
     techDetails: 'arXiv collection · BM25 and PageRank ranking · about 99% fewer graph edges · incoming-link traversal · AND / OR / NOT recursive-descent parser · LRU cache',
     art: 'search',
@@ -35,9 +35,9 @@ const projects = [
     description: 'A live map of simulated flights that keeps aircraft locations current and checks for nearby planes.',
     stack: ['Python', 'FastAPI', 'WebSocket', 'PostgreSQL', 'Docker', 'React', 'CesiumJS'],
     highlights: [
-      { metric: '200', text: 'The live 3D map displayed 200 simulated flights.' },
-      { metric: '2 sec', text: 'The map refreshed every 2 seconds, and nearby aircraft were checked every 15 seconds.' },
-      { metric: '17 tests', text: 'The project included 17 tests, and 10 tracked issues were resolved.' },
+      { metric: '200 flights', text: 'Tracked 200 simulated flights live with a multi-threaded producer-consumer pipeline, measured by 17 automated tests.' },
+      { metric: '15 sec checks', text: 'Flagged close-approach aircraft across 200 flights using pairwise distance and altitude checks.' },
+      { metric: '2 sec updates', text: 'Gave users a live 3D view with globe updates over WebSocket using a React and CesiumJS frontend.' },
     ],
     techDetails: 'Producer–consumer pipeline · pairwise distance and altitude checks · WebSocket updates · documented full-stack issue resolution',
     art: 'flight',
@@ -47,17 +47,17 @@ const projects = [
 const work = [
   {
     company: 'Crestaerospace Pvt. Ltd.', role: 'Full-Stack Developer Intern', dates: 'Jul 2025 — Nov 2025',
-    points: ['Reduced peer-review cycle time ~40% across 8 REST API endpoints by authoring interface contracts and documentation standards.', 'Cut incident-resolution time 15% across 5+ production incidents by diagnosing root causes and authoring adopted debugging protocols.'],
+    points: ['Sped up code reviews, measured by a 20% shorter review cycle on 8 REST endpoints, by writing API specs and docs.', 'Resolved incidents faster, measured by 15% less time across 5+ incidents, by diagnosing root causes and writing debugging protocols.'],
     mark: 'CA',
   },
   {
     company: 'Rooman Technologies', role: 'AI & ML Intern', dates: 'Sep 2024 — Feb 2025',
-    points: ['Automated behavioural insight delivery across 100% of client data with an end-to-end AI pipeline (Watson NLP, Autoencoders, K-Means) as sole contributor.', 'Improved model accuracy 16% over baseline via k-fold cross-validation and independent hyperparameter tuning.'],
+    points: ['Automated client behaviour insights, measured by 100% data coverage, via an AI pipeline (Watson NLP, Autoencoders, KMeans) as sole contributor.', 'Improved model accuracy, measured by a 16% gain over baseline, by tuning hyperparameters with k-fold cross-validation.'],
     mark: 'RT',
   },
   {
     company: 'LRDE, DRDO', role: 'Software Developer Intern', dates: 'Nov 2023 — Dec 2023',
-    points: ['Eliminated 40% of manual ETL processing time across all assigned modules by automating batch pipelines in Python.', 'Enabled full pipeline ownership with zero escalations by resolving 3 critical ETL bottlenecks and authoring runbooks for all modules.'],
+    points: ['Cut manual processing time, measured by a 40% reduction across all modules, by automating batch ETL pipelines in Python.', 'Took over pipelines independently, measured by zero escalations, by fixing 3 critical bottlenecks and writing runbooks.'],
     mark: 'DR',
   },
 ];
@@ -161,6 +161,13 @@ function App() {
               <article className="degree"><div className="degree-symbol">01</div><div><span className="degree-date">SEPT 2025 — MAY 2027 · ANTICIPATED</span><h3>Master of Technology</h3><p>Computer Science and Engineering</p><span className="school">New Horizon College of Engineering, Bengaluru</span></div><div className="gpa"><strong>9.0</strong><span>CGPA / 10</span></div></article>
               <article className="degree"><div className="degree-symbol">02</div><div><span className="degree-date">OCT 2021 — MAY 2025</span><h3>Bachelor of Engineering</h3><p>Computer Science and Engineering</p><span className="school">MVJ College of Engineering, Bengaluru</span></div><div className="gpa"><strong>7.73</strong><span>CGPA / 10</span></div></article>
             </div>
+            <div className="certifications">
+              <div className="certifications-heading"><ShieldCheck size={18}/><span>CERTIFICATIONS</span></div>
+              <div className="certification-list">
+                <article className="certification"><span className="certification-number">01</span><div><h3>Implementation Consultant</h3><p>SAP S/4HANA Cloud, Public Edition</p></div><span className="certification-label">SAP</span></article>
+                <article className="certification"><span className="certification-number">02</span><div><h3>Solution Architect</h3><p>SAP Business AI Platform</p></div><span className="certification-label">SAP</span></article>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -224,6 +231,10 @@ function App() {
                 <span className="job-index">0{i + 1}</span>
               </article>)}
             </div>
+            <div className="experience-art" aria-hidden="true">
+              <img src="/pushya-chibi-03.png" alt="" />
+              <span>KEEP BUILDING · KEEP LEARNING</span>
+            </div>
           </div>
         </section>
 
@@ -246,6 +257,9 @@ function App() {
               </div>
               <p className="contact-form-status" aria-live="polite" role={contactNotice === 'error' ? 'alert' : 'status'}>{contactNotice === 'sent' ? 'Your note is on its way. Thanks for reaching out.' : contactNotice === 'error' ? 'Your note could not be sent right now. Please try again or email me directly.' : ''}</p>
             </form>
+          </div>
+          <div className="contact-art" aria-hidden="true">
+            <img src="/pushya-chibi-02.png" alt="" />
           </div>
           <div className="contact-links">
             <a href="tel:+917259167376"><Phone size={15}/> +91 7259167376</a>
